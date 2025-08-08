@@ -33,7 +33,8 @@ public class User implements UserDetails {
     @Size(min = 8, message = "Password must be at least 8 characters ")
     private String password;
 
-
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "user")
+    private List<Token> token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
