@@ -1,8 +1,10 @@
 package Mamadou.com.SecureVault.util;
 
+import Mamadou.com.SecureVault.service.TokenService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,10 @@ public class JwtUtil {
 
     @Value("${jwt.secret}")
     private String secret;
+
+    @Autowired
+    private TokenService tokenService;
+
     private final Long EXPIRATION_DATE= 83007302L;
 
     private Key getSigningKey(){
